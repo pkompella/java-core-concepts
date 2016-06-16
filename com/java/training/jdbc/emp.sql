@@ -1,0 +1,26 @@
+
+CREATE DATABASE Training;
+
+
+CREATE TABLE Employees
+(
+   id INT NOT NULL,
+   age INT NOT NULL,
+   fname VARCHAR(255),
+   lname VARCHAR(255),
+   address VARCHAR(255),
+   PRIMARY KEY ( id )
+);
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `Training`.`getEmpName` $$
+CREATE PROCEDURE `Training`.`getEmpName` 
+   (IN EMP_ID INT, OUT FIRST_NAME VARCHAR(255))
+BEGIN
+   SELECT fname INTO FIRST_NAME
+   FROM Employee
+   WHERE ID = EMP_ID;
+END $$
+
+DELIMITER ;
